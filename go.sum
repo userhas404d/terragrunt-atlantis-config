@@ -535,8 +535,8 @@ github.com/grpc-ecosystem/grpc-gateway v1.8.5/go.mod h1:vNeuVxBJEsws4ogUvrchl83t
 github.com/grpc-ecosystem/grpc-gateway v1.16.0/go.mod h1:BDjrQk3hbvj6Nolgz8mAMFbcEtjT1g+wF4CSlocrBnw=
 github.com/gruntwork-io/gruntwork-cli v0.7.0 h1:YgSAmfCj9c61H+zuvHwKfYUwlMhu5arnQQLM4RH+CYs=
 github.com/gruntwork-io/gruntwork-cli v0.7.0/go.mod h1:jp6Z7NcLF2avpY8v71fBx6hds9eOFPELSuD/VPv7w00=
-github.com/gruntwork-io/terragrunt v0.46.2 h1:fwqb0RAhxV9FL2TanzSIYvo5EFVpC2wC1N4csYeosGE=
-github.com/gruntwork-io/terragrunt v0.46.2/go.mod h1:zHyl8Uc/JsKQj+X94Tq5MVWAdZL+02fGjB12uuoIWnY=
+github.com/gruntwork-io/terragrunt v0.47.0 h1:sYEIBcwfya7WG6sig58ssTcr5ST5bEin+FE1w+npZGw=
+github.com/gruntwork-io/terragrunt v0.47.0/go.mod h1:UUPeQZP+swqZpL5XCTtf8LT/ozO84uocbJ41FuoF6eE=
 github.com/gruntwork-io/terratest v0.32.6 h1:OEA11ZqEwKRowEdxusDnAPnMUN0w/jzeNcziuQsqkYk=
 github.com/hashicorp/aws-sdk-go-base v0.6.0/go.mod h1:2fRjWDv3jJBeN6mVWFHV6hFTNeFBx2gpDLQaZNxUVAY=
 github.com/hashicorp/consul v0.0.0-20171026175957-610f3c86a089/go.mod h1:mFrjN1mfidgJfYP1xrJCF+AfRhr6Eaqhb2+sfyn/OOI=
@@ -630,8 +630,8 @@ github.com/hashicorp/serf v0.0.0-20160124182025-e4ec8cc423bb/go.mod h1:h/Ru6tmZa
 github.com/hashicorp/terraform v0.15.3 h1:2QWbTj2xJ/8W1gCyIrd0WAqVF4weKPMYjx8nKjbkQjA=
 github.com/hashicorp/terraform v0.15.3/go.mod h1:w4eBEsluZfYumXUTLe834eqHh969AabcLqbj2WAYlM8=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2/go.mod h1:Z0Nnk4+3Cy89smEbrq+sl1bxc9198gIP4I7wcQF6Kqs=
-github.com/hashicorp/terraform-config-inspect v0.0.0-20230522202058-dbe9bfcbfe7a h1:zKVsrHhIOWiXHYqFrOXfHacOOVDMYv+v/Wx8DUeyySs=
-github.com/hashicorp/terraform-config-inspect v0.0.0-20230522202058-dbe9bfcbfe7a/go.mod h1:l8HcFPm9cQh6Q0KSWoYPiePqMvRFenybP1CH2MjKdlg=
+github.com/hashicorp/terraform-config-inspect v0.0.0-20230614215431-f32df32a01cd h1:1uPcotqoL4TjcGKlgIe7OFSRplf7BMVtUjekwmCrvuM=
+github.com/hashicorp/terraform-config-inspect v0.0.0-20230614215431-f32df32a01cd/go.mod h1:l8HcFPm9cQh6Q0KSWoYPiePqMvRFenybP1CH2MjKdlg=
 github.com/hashicorp/terraform-registry-address v0.1.0 h1:W6JkV9wbum+m516rCl5/NjKxCyTVaaUBbzYcMzBDO3U=
 github.com/hashicorp/terraform-registry-address v0.1.0/go.mod h1:EnyO2jYO6j29DTHbJcm00E5nQTFeTtyZH3H5ycydQ5A=
 github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 h1:HKLsbzeOsfXmKNpr3GiT18XAblV0BjCbzL8KQAMZGa0=
@@ -1106,8 +1106,8 @@ golang.org/x/sync v0.0.0-20210220032951-036812b2e83c/go.mod h1:RxMgew5VJxzue5/jJ
 golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20220929204114-8fcdb60fdcc0/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
-golang.org/x/sync v0.2.0 h1:PUR+T4wwASmuSTYdKjYHI5TD22Wy5ogLU5qZCOLxBrI=
-golang.org/x/sync v0.2.0/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+golang.org/x/sync v0.3.0 h1:ftCYgMx6zT/asHUrPw8BLLscYtGznsLAnjq5RH9P66E=
+golang.org/x/sync v0.3.0/go.mod h1:FU7BRWz2tNW+3quACPkgCx/L+uEAv1htQ0V83Z9Rj+Y=
 golang.org/x/sys v0.0.0-20170830134202-bb24a47a89ea/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20180823144017-11551d06cbcc/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20180830151530-49385e6e1522/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
