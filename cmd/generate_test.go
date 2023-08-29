@@ -74,7 +74,7 @@ func runTest(t *testing.T, goldenFile string, args []string) {
 		return
 	}
 
-	goldenContentsBytes, err := ioutil.ReadFile(goldenFile)
+	goldenContentsBytes, err := os.ReadFile(goldenFile)
 	goldenContents := &AtlantisConfig{}
 	yaml.Unmarshal(goldenContentsBytes, goldenContents)
 	if err != nil {
