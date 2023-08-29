@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -331,7 +330,7 @@ func TestPreservingOldWorkflows(t *testing.T) {
       steps:
       - run: terragrunt plan -no-color -out $PLANFILE
 `)
-	ioutil.WriteFile(filename, contents, 0644)
+	os.WriteFile(filename, contents, 0644)
 
 	content, err := RunWithFlags(filename, []string{
 		"generate",
@@ -345,7 +344,7 @@ func TestPreservingOldWorkflows(t *testing.T) {
 		return
 	}
 
-	goldenContents, err := ioutil.ReadFile(filepath.Join("golden", "oldWorkflowsPreserved.yaml"))
+	goldenContents, err := os.ReadFile(filepath.Join("golden", "oldWorkflowsPreserved.yaml"))
 	if err != nil {
 		t.Error("Failed to read golden file")
 		return
@@ -377,7 +376,7 @@ func TestPreservingOldProjects(t *testing.T) {
   dir: someDir
   name: projectFromPreviousRun 
 `)
-	ioutil.WriteFile(filename, contents, 0644)
+	os.WriteFile(filename, contents, 0644)
 
 	content, err := RunWithFlags(filename, []string{
 		"generate",
@@ -392,7 +391,7 @@ func TestPreservingOldProjects(t *testing.T) {
 		return
 	}
 
-	goldenContents, err := ioutil.ReadFile(filepath.Join("golden", "oldProjectsPreserved.yaml"))
+	goldenContents, err := os.ReadFile(filepath.Join("golden", "oldProjectsPreserved.yaml"))
 	if err != nil {
 		t.Error("Failed to read golden file")
 		return
