@@ -1,4 +1,4 @@
-VERSION=1.16.2-nexhealth
+VERSION=1.17.0-nexhealth
 PATH_BUILD=build/
 FILE_COMMAND=terragrunt-atlantis-config
 FILE_ARCH=darwin_amd64

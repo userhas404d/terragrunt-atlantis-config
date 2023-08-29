@@ -8,7 +8,6 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/ghodss/yaml"
-	"github.com/gruntwork-io/terragrunt/cli"
 	"github.com/gruntwork-io/terragrunt/config"
 	"github.com/gruntwork-io/terragrunt/options"
 	"github.com/spf13/cobra"
@@ -258,10 +257,10 @@ func getDependencies(path string, terragruntOptions *options.TerragruntOptions) 
 				continue
 			}
 
-			depPath := dep
-			terrOpts, _ := options.NewTerragruntOptions(depPath)
+			terrOpts := options.NewTerragruntOptions()
+			terrOpts.TerragruntConfigPath = dep
 			terrOpts.OriginalTerragruntConfigPath = terragruntOptions.OriginalTerragruntConfigPath
-			childDeps, err := getDependencies(depPath, terrOpts)
+			childDeps, err := getDependencies(dep, terrOpts)
 			if err != nil {
 				continue
 			}
@@ -272,7 +271,7 @@ func getDependencies(path string, terragruntOptions *options.TerragruntOptions) 
 				// path to be from the top level module instead.
 				childDepAbsPath := childDep
 				if !filepath.IsAbs(childDep) {
-					childDepAbsPath, err = filepath.Abs(filepath.Join(depPath, "..", childDep))
+					childDepAbsPath, err = filepath.Abs(filepath.Join(dep, "..", childDep))
 					if err != nil {
 						getDependenciesCache.set(path, getDependenciesOutput{nil, err})
 						return nil, err
@@ -319,12 +318,9 @@ func getDependencies(path string, terragruntOptions *options.TerragruntOptions) 
 
 // Creates an AtlantisProject for a directory
 func createProject(sourcePath string) (*AtlantisProject, error) {
-	options, err := options.NewTerragruntOptions(sourcePath)
-	if err != nil {
-		return nil, err
-	}
+	options := options.NewTerragruntOptions()
+	options.TerragruntConfigPath = sourcePath
 	options.OriginalTerragruntConfigPath = sourcePath
-	options.RunTerragrunt = cli.RunTerragrunt
 	options.Env = getEnvs()
 
 	dependencies, err := getDependencies(sourcePath, options)
@@ -439,11 +435,8 @@ func createHclProject(sourcePaths []string, workingDir string, projectHcl string
 	terraformVersion := defaultTerraformVersion
 
 	projectHclFile := filepath.Join(workingDir, projectHcl)
-	projectHclOptions, err := options.NewTerragruntOptions(workingDir)
-	if err != nil {
-		return nil, err
-	}
-	projectHclOptions.RunTerragrunt = cli.RunTerragrunt
+	projectHclOptions := options.NewTerragruntOptions()
+	projectHclOptions.TerragruntConfigPath = workingDir
 	projectHclOptions.Env = getEnvs()
 
 	locals, err := parseLocals(projectHclFile, projectHclOptions, nil)
@@ -496,11 +489,8 @@ func createHclProject(sourcePaths []string, workingDir string, projectHcl string
 
 	// build dependencies for terragrunt childs in directories below project hcl file
 	for _, sourcePath := range sourcePaths {
-		options, err := options.NewTerragruntOptions(sourcePath)
-		if err != nil {
-			return nil, err
-		}
-		options.RunTerragrunt = cli.RunTerragrunt
+		options := options.NewTerragruntOptions()
+		options.TerragruntConfigPath = sourcePath
 		options.Env = getEnvs()
 
 		dependencies, err := getDependencies(sourcePath, options)
@@ -577,10 +567,8 @@ func createHclProject(sourcePaths []string, workingDir string, projectHcl string
 
 // Finds the absolute paths of all terragrunt.hcl files
 func getAllTerragruntFiles(path string) ([]string, error) {
-	options, err := options.NewTerragruntOptions(path)
-	if err != nil {
-		return nil, err
-	}
+	options := options.NewTerragruntOptions()
+	options.TerragruntConfigPath = path
 
 	// If filterPath is provided, override workingPath instead of gitRoot
 	// We do this here because we want to keep the relative path structure of Terragrunt files
@@ -588,6 +576,7 @@ func getAllTerragruntFiles(path string) ([]string, error) {
 	workingPaths := []string{path}
 
 	// filters are not working (yet) if using project hcl files (which are kind of filters by themselves)
+	var err error
 	if filterPath != "" && len(projectHclFiles) == 0 {
 		// get all matching folders
 		workingPaths, err = filepath.Glob(filterPath)
@@ -962,5 +951,5 @@ func RunWithFlags(filename string, args []string) ([]byte, error) {
 	rootCmd.SetArgs(args)
 	rootCmd.Execute()
 
-	return ioutil.ReadFile(filename)
+	return os.ReadFile(filename)
 }
