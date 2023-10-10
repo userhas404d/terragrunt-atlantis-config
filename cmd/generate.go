@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"regexp"
 	"sort"
 
@@ -737,7 +738,7 @@ func main(cmd *cobra.Command, args []string) error {
 					defer sem.Release(1)
 					project, err := createProject(terragruntPath)
 					if err != nil {
-						return err
+						return fmt.Errorf("Failed to create project for %s: %w", terragruntPath, err)
 					}
 					// if project and err are nil then skip this project
 					if err == nil && project == nil {
