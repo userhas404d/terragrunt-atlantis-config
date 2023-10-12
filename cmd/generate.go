@@ -331,7 +331,8 @@ func createProject(sourcePath string) (*AtlantisProject, error) {
 
 	dependencies, err := getDependencies(sourcePath, options)
 	if err != nil {
-		return nil, err
+		log.Error("Encountered error when parsing hcl file: ", err)
+		return nil, nil
 	}
 
 	// dependencies being nil is a sign from `getDependencies` that this project should be skipped
